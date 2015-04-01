@@ -1,15 +1,31 @@
 name: AntiJoinBot
-description: Dynamic plugin class loader for Emperion mini-plugins
+description: Checks players for proxies and blocks them
 main: com.certox.Core
-version: 4.3
-author: 200dvd/Certox
+version: 5.0
+authors: [200dvd/Certox, Maxetto]
 prefix: AJB
 
 commands:
  ajb:
   description: All the AntiJoinBot commands
-  permission: ajb.core.cmd
 permissions:
- ajb.core.cmd:
+ ajb.*:
   description: Management access
+  default: op
+ children:
+  ajb.reload: true
+  ajb.toggle: true
+  ajb.add: true
+  ajb.bypass: true
+ ajb.reload:
+  description: Reloads configuration and DB connection
+  default: op
+ ajb.toggle:
+  description: Activates/deactivates the plugin
+  default: op
+ ajb.add:
+  description: Adds the given player to the AJB whitelist/blacklist
+  default: op
+ ajb.bypass:
+  description: Allows the player to join without getting checked
   default: op
