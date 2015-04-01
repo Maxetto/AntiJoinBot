@@ -1,0 +1,15 @@
+name: AntiJoinBot
+description: Dynamic plugin class loader for Emperion mini-plugins
+main: com.certox.Core
+version: 4.3
+author: 200dvd/Certox
+prefix: AJB
+
+commands:
+ ajb:
+  description: All the AntiJoinBot commands
+  permission: ajb.core.cmd
+permissions:
+ ajb.core.cmd:
+  description: Management access
+  default: op
