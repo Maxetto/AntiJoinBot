@@ -290,7 +290,7 @@ import com.evilmidget38.UUIDFetcher;
      } else {
      if (this.db.userBlacklist.containsKey(e.getPlayer().getUniqueId().toString())) {
        debug("[M] userBlacklist: " + e.getPlayer().getName() + " --> " + this.db.userBlacklist.get(e.getPlayer().getUniqueId().toString()));
-       if (((Boolean)this.db.userBlacklist.get(e.getPlayer().getUniqueId())).booleanValue()) {
+       if (((Boolean)this.db.userBlacklist.get(e.getPlayer().getUniqueId().toString())).booleanValue()) {
          e.disallow(PlayerLoginEvent.Result.KICK_OTHER, this.kickMsg);
          }
        return;
@@ -348,7 +348,7 @@ import com.evilmidget38.UUIDFetcher;
        } else {
     	     if (this.db.userBlacklist.containsKey(e.getUniqueId().toString())) {
     	         debug("[A] userBlacklist: " + e.getName() + " --> " + this.db.userBlacklist.get(e.getUniqueId().toString()));
-    	         if (((Boolean)this.db.userBlacklist.get(e.getUniqueId())).booleanValue()) {
+    	         if (((Boolean)this.db.userBlacklist.get(e.getUniqueId().toString())).booleanValue()) {
     	           e.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, this.kickMsg);
          }
        return;
