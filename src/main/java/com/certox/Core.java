@@ -211,7 +211,7 @@ import com.evilmidget38.UUIDFetcher;
          }
          String[] args = ((String)this.activeBlacklist.get(s)).split(",");
          for (String arg : args) {
-           if (res.contains(arg)) {
+           if (res.matches(arg)) {
              debug(s.replace(",", ".") + ": (" + IP + " --> true)");
              return Boolean.valueOf(true);
            }
