@@ -236,7 +236,7 @@ import com.evilmidget38.UUIDFetcher;
 		 this.db.connect(getConfig().getString("AntiJoinBot.MySQL.Host"), getConfig().getInt("AntiJoinBot.MySQL.Port"), getConfig().getString("AntiJoinBot.MySQL.Database"), getConfig().getString("AntiJoinBot.MySQL.User"), getConfig().getString("AntiJoinBot.MySQL.Password"), getConfig().getBoolean("AntiJoinBot.MySQL.Offline"));
      if (e.getPlayer().hasPermission("ajb.bypass")) {
     	 if (this.offlineMode.booleanValue()) {
-    	 if (!this.db.userBlacklist.containsKey(e.getPlayer()))
+    	 if (!this.db.userBlacklist.containsKey(e.getPlayer().getName()))
          this.db.setUserName(e.getPlayer(), false);
     	 } else {
     		 if (!this.db.userBlacklist.containsKey(e.getPlayer().getUniqueId().toString()))
@@ -280,9 +280,9 @@ import com.evilmidget38.UUIDFetcher;
 		 this.db.connect(getConfig().getString("AntiJoinBot.MySQL.Host"), getConfig().getInt("AntiJoinBot.MySQL.Port"), getConfig().getString("AntiJoinBot.MySQL.Database"), getConfig().getString("AntiJoinBot.MySQL.User"), getConfig().getString("AntiJoinBot.MySQL.Password"), getConfig().getBoolean("AntiJoinBot.MySQL.Offline"));
      debug("[M] JOIN: " + e.getAddress().getHostAddress() + " --> " + e.getPlayer().getName());
      if (this.offlineMode.booleanValue()) {
-         if (this.db.userBlacklist.containsKey(e.getPlayer())) {
-             debug("[M] userBlacklist: " + e.getPlayer().getName() + " --> " + this.db.userBlacklist.get(e.getPlayer()));
-             if (((Boolean)this.db.userBlacklist.get(e.getPlayer())).booleanValue()) {
+         if (this.db.userBlacklist.containsKey(e.getPlayer().getName())) {
+             debug("[M] userBlacklist: " + e.getPlayer().getName() + " --> " + this.db.userBlacklist.get(e.getPlayer().getName()));
+             if (((Boolean)this.db.userBlacklist.get(e.getPlayer().getName())).booleanValue()) {
                e.disallow(PlayerLoginEvent.Result.KICK_OTHER, this.kickMsg);
              }
              return;
@@ -385,10 +385,16 @@ import com.evilmidget38.UUIDFetcher;
 						 if(this.db.isConnected())
 							this.db.closeConnection();
 						 this.db.connect(getConfig().getString("AntiJoinBot.MySQL.Host"), getConfig().getInt("AntiJoinBot.MySQL.Port"), getConfig().getString("AntiJoinBot.MySQL.Database"), getConfig().getString("AntiJoinBot.MySQL.User"), getConfig().getString("AntiJoinBot.MySQL.Password"), getConfig().getBoolean("AntiJoinBot.MySQL.Offline"));
+						 if (!this.db.userBlacklist.isEmpty())
+						 	this.db.userBlacklist.clear();
+						 if (!this.db.ipBlacklist.isEmpty())
+						 	this.db.ipBlacklist.clear();
 						 if (this.offlineMode.booleanValue()) {
 							this.db.initDBOffline();
+							this.db.loadDBOfflinetoRAM();
 						 } else {
 							this.db.initDB();
+							this.db.loadDBtoRAM();
 						 }
 							sender.sendMessage("[AJB] §cConfig & database reloaded successfully");
 						 } catch (Exception e) {
