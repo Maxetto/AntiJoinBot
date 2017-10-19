@@ -22,8 +22,7 @@ import org.mcstats.Metrics;
 
 import com.evilmidget38.UUIDFetcher;
  
- public class Core extends JavaPlugin implements org.bukkit.event.Listener
- {
+ public class Core extends JavaPlugin implements org.bukkit.event.Listener {
    public MySQL db = new MySQL();
    Core plugin = this;
    
@@ -46,8 +45,7 @@ import com.evilmidget38.UUIDFetcher;
    
    public Core() {}
    
-   public void onLoad()
-   {
+   public void onLoad() {
      getConfig().addDefault("AntiJoinBot.MySQL.Offline", Boolean.valueOf(true));
      getConfig().addDefault("AntiJoinBot.MySQL.Host", "localhost");
      getConfig().addDefault("AntiJoinBot.MySQL.Port", Integer.valueOf(3306));
@@ -98,8 +96,7 @@ import com.evilmidget38.UUIDFetcher;
    }
    
  
-   public void onEnable()
-   {
+   public void onEnable() {
 	     try {
 	         this.db.connect(getConfig().getString("AntiJoinBot.MySQL.Host"), getConfig().getInt("AntiJoinBot.MySQL.Port"), getConfig().getString("AntiJoinBot.MySQL.Database"), getConfig().getString("AntiJoinBot.MySQL.User"), getConfig().getString("AntiJoinBot.MySQL.Password"), getConfig().getBoolean("AntiJoinBot.MySQL.Offline"));
 	         if (this.offlineMode.booleanValue()) {
@@ -146,10 +143,7 @@ import com.evilmidget38.UUIDFetcher;
            System.out.println("AntiJoinBot is enabled");
            Bukkit.getPluginManager().registerEvents(Core.this.plugin, Core.this.plugin); } }, getConfig().getInt("AntiJoinBot.Warmup.Seconds") * 20);
  
-     }
-     else
-     {
- 
+     } else {
        Bukkit.getPluginManager().registerEvents(this.plugin, this.plugin);
      }
      
@@ -188,9 +182,7 @@ import com.evilmidget38.UUIDFetcher;
 	           } else {
 	        	   System.out.println("[AJB] Error Downloading the Blacklist");
 	         }
-	         
 	       }
-	     
 	 }
      
      try {
