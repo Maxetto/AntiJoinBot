@@ -1,6 +1,5 @@
 package com.certox;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -17,8 +16,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.server.ServerListPingEvent;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import org.mcstats.Metrics;
 
 import com.evilmidget38.UUIDFetcher;
  
@@ -184,11 +181,6 @@ import com.evilmidget38.UUIDFetcher;
 	         }
 	       }
 	 }
-     
-     try {
-         Metrics metrics = new Metrics(this);
-         metrics.start();
-     } catch (IOException e) {}
    }
    
    public Boolean isProxy(String IP) {

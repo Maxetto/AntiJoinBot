@@ -1,8 +1,8 @@
 name: AntiJoinBot
 description: Checks players for proxies and blocks them
 main: com.certox.Core
-version: 5.0
-authors: [200dvd/Certox, Maxetto]
+version: 5.0.1
+authors: [200dvd/Certox, Maxetto, RoboMWM]
 prefix: AJB
 
 commands:
